@@ -13,10 +13,11 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173', // for local testing
-    'https://note-tracking-app-front-end-t241.vercel.app', // your live frontend
+    'https://note-tracking-app-front-end.vercel.app', // your live frontend
   ],
   credentials: true,
 }));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
