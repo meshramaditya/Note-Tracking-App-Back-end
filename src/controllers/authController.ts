@@ -7,8 +7,6 @@ import User from '../models/User';
 export const signupUser = async (req: Request, res: Response): Promise<void> => {
   const { email, password, name, dob } = req.body;
 
-  console.log('Incoming Signup Request:', req.body); // 👈 add this
-
   try {
     if (!email || !password || !name || !dob) {
       res.status(400).json({ message: 'All fields are required ❌' });
