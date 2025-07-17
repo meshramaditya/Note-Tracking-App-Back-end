@@ -7,6 +7,8 @@ import User from '../models/User';
 export const signupUser = async (req: Request, res: Response): Promise<void> => {
   const { email, password, name, dob } = req.body;
 
+  console.log('📥 Signup Request:', req.body);
+
   try {
     if (!email || !password || !name || !dob) {
       res.status(400).json({ message: 'All fields are required ❌' });
@@ -40,6 +42,11 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
 
   try {
+    if (!email || !password) {
+      res.status(400).json({ message: 'Email and password are required ❌' });
+      return;
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
       res.status(404).json({ message: 'User not found ❌' });
